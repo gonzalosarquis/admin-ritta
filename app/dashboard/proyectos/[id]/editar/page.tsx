@@ -688,45 +688,35 @@ export default function EditarProyectoPage() {
                         src={img.url}
                         alt={img.titulo || 'Imagen'}
                         className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none'
-                        }}
+                        onError={(e) => { e.currentTarget.style.display = 'none' }}
                       />
-                      {/* Hero badge */}
-                      {isHero && (
-                        <div className="absolute top-2 left-2 bg-amber-400 text-white text-xs px-2 py-0.5 rounded-full font-semibold flex items-center gap-1 shadow">
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                          Portada
-                        </div>
-                      )}
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all">
-                        {/* Set as hero */}
-                        {!isHero && (
-                          <button
-                            onClick={() => setAsHero(img.url)}
-                            className="absolute bottom-2 left-2 bg-white/90 hover:bg-white text-stone-800 text-xs px-2 py-1 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-all shadow"
-                            title="Usar como portada"
-                          >
-                            Portada
-                          </button>
-                        )}
-                        {/* Delete */}
-                        <button
-                          onClick={() => deleteImagen(img.id)}
-                          className="absolute top-2 right-2 w-7 h-7 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg"
-                          title="Eliminar imagen"
-                        >
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                          </svg>
-                        </button>
-                        {/* Order badge */}
-                        <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-1.5 py-0.5 rounded font-medium opacity-0 group-hover:opacity-100 transition-all">
-                          #{img.orden}
-                        </div>
-                      </div>
+
+                      {/* Estrella portada — siempre visible */}
+                      <button
+                        onClick={() => setAsHero(img.url)}
+                        title={isHero ? 'Imagen de portada' : 'Usar como portada'}
+                        className="absolute top-2 left-2 w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-110 z-10"
+                        style={{ background: isHero ? '#f59e0b' : 'rgba(255,255,255,0.85)' }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24"
+                          fill={isHero ? 'white' : '#9ca3af'}
+                          stroke={isHero ? 'white' : '#9ca3af'}
+                          strokeWidth="1.5">
+                          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                      </button>
+
+                      {/* Botón eliminar — aparece en hover */}
+                      <button
+                        onClick={() => deleteImagen(img.id)}
+                        className="absolute top-2 right-2 w-7 h-7 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all shadow-lg z-10"
+                        title="Eliminar imagen"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18"/>
+                          <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                      </button>
                     </div>
                     )
                   })}

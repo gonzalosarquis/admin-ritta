@@ -87,6 +87,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </svg>
             Proyectos
           </Link>
+          <Link
+            href="/dashboard/sitio"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all ${
+              pathname?.includes('/sitio')
+                ? 'bg-white/10 text-white'
+                : 'text-stone-400 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            Editar sitio
+          </Link>
         </nav>
 
         {/* Deploy */}
