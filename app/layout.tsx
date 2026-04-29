@@ -15,10 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RITTA Estudio · Admin",
   description: "Panel de administración de RITTA Estudio",
-  icons: {
-    icon: '/favicon-ritta.png',
-    apple: '/favicon-ritta.png',
-  },
 };
 
 export default function RootLayout({
